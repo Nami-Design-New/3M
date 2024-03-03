@@ -56,23 +56,23 @@ toggler.addEventListener("click", () => {
   }
 });
 //contact higlight inputs
-const inputs = document.querySelectorAll(
-  ".inputfield input, .inputfield textarea , .inputfield select"
-);
-function highlight(event) {
-  const label = event.target.previousElementSibling;
-  label.classList.add("h");
-}
-function dehighlight(event) {
-  const label = event.target.previousElementSibling;
-  if (event.target.value === "") {
-    label.classList.remove("h");
-  }
-}
-inputs.forEach((input) => {
-  input.addEventListener("focus", highlight);
-  input.addEventListener("blur", dehighlight);
-});
+// const inputs = document.querySelectorAll(
+//   ".inputfield input, .inputfield textarea , .inputfield select"
+// );
+// function highlight(event) {
+//   const label = event.target.previousElementSibling;
+//   label.classList.add("h");
+// }
+// function dehighlight(event) {
+//   const label = event.target.previousElementSibling;
+//   if (event.target.value === "") {
+//     label.classList.remove("h");
+//   }
+// }
+// inputs.forEach((input) => {
+//   input.addEventListener("focus", highlight);
+//   input.addEventListener("blur", dehighlight);
+// });
 // // nav-links highlight by getting path name
 // const { pathname } = window.location;
 // let navLinks = document.querySelectorAll(".navigation_links a");

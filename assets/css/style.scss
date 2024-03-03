@@ -107,14 +107,6 @@ header {
     background: $second;
     height: 50px;
     width: 100%;
-    @media (max-width: 576px) {
-      height: 80px;
-      padding: 8px 0;
-      .container {
-        flex-direction: column;
-        justify-content: space-around;
-      }
-    }
     .container {
       height: 100%;
       @include space-between();
@@ -123,6 +115,9 @@ header {
       display: flex;
       align-items: center;
       gap: 4px;
+      @media (max-width: 576px) {
+        display: none;
+      }
       p,
       a {
         font-size: 14px;
@@ -136,6 +131,10 @@ header {
       gap: 8px;
       display: flex;
       align-items: center;
+      @media (max-width: 576px) {
+        width: 100%;
+        padding: 0 8px;
+      }
       .nav_links {
         height: 100%;
         display: flex;
@@ -177,6 +176,9 @@ header {
         line-height: 16px;
         @include clearInput();
         font-family: "montserrat", sans-serif;
+        @media (max-width: 576px) {
+          margin-left: auto;
+        }
       }
     }
   }
@@ -233,6 +235,12 @@ header {
               color: $second;
               padding: 2px 8px;
             }
+            @media (max-width: 992px) {
+              &.appointment,
+              &.open-center {
+                display: none;
+              }
+            }
           }
           &:last-child {
             padding-right: 0;
@@ -264,6 +272,7 @@ header {
       @media (max-width: 992px) {
         height: 100%;
         display: flex;
+        gap: 12px;
         align-items: center;
         justify-content: flex-end;
       }
@@ -320,6 +329,13 @@ header {
             }
           }
         }
+      }
+      .appointment {
+        background: $second;
+        border-radius: 4px;
+        text-transform: capitalize;
+        color: $white;
+        padding: 2px 8px;
       }
     }
   }
@@ -639,7 +655,7 @@ footer {
   }
 }
 .contact-us {
-  padding: 40px 16px 60px;
+  padding: 40px 0 60px;
   form {
     padding: 48px 32px;
     background: $white;
@@ -647,7 +663,7 @@ footer {
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 24px;
     margin-top: 12px;
     @media (max-width: 576px) {
       padding: 32px 0;
@@ -657,75 +673,41 @@ footer {
       width: 100%;
       @media (max-width: 768px) {
         flex-direction: column;
-        gap: 48px;
+        gap: 24px;
       }
       .inputfield {
         width: 100%;
-        padding: 0 32px;
+        padding: 0 12px;
         position: relative;
         display: flex;
         flex-direction: column;
         @media (max-width: 576px) {
-          padding: 0 16px;
-        }
-        label {
-          position: absolute;
-          font-size: 14px;
-          color: $main;
-          left: 32px;
-          transform: translateY(-50%);
-          top: 50%;
-          transition: $transition;
-          cursor: auto;
-          @media (max-width: 576px) {
-            right: 16px;
-          }
-          &.message-label {
-            top: 20%;
-          }
-          &.h {
-            top: -4px;
-            color: $second;
-          }
+          padding: 0 12px;
         }
         input,
         textarea,
         select {
-          width: 100%;
-          height: 45px;
           @include clearInput();
-          &:focus + span::after {
-            width: calc(100% - 64px);
-            @media (max-width: 576px) {
-              width: calc(100% - 32px);
-            }
+          width: 100%;
+          padding: 0 12px;
+          border: 1px solid $border;
+          height: 54px;
+          border-radius: 8px;
+          transition: $transition;
+          &:focus {
+            border-color: $second;
           }
         }
         textarea {
-          padding: 16px 0;
+          padding: 16px 12px;
           height: 130px;
-        }
-        .highlight {
-          width: 100%;
-          height: 2px;
-          background: #eeeeee;
-          &::after {
-            content: "";
-            width: 0;
-            transition: $transition;
-            left: 50%;
-            height: 2px;
-            background: $second;
-            position: absolute;
-            transform: translate(-50%);
-          }
         }
       }
     }
     button {
       @include clearInput();
       align-self: flex-end;
-      margin-right: 32px;
+      margin-right: 12px;
       isolation: isolate;
       padding: 0 16px;
       font-size: 14px;
@@ -733,7 +715,7 @@ footer {
       height: 50px;
       background: $main;
       color: $white;
-      border-radius: 4px;
+      border-radius: 8px;
       @include centerFlex();
       position: relative;
       overflow: hidden;
@@ -1119,24 +1101,30 @@ footer {
     margin-top: 32px;
     min-height: 50px;
     border-radius: 300px;
-    background: #ebebeb;
+    background: #f2f2f2;
     backdrop-filter: blur(10px);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 576px) {
+      border-radius: 12px;
+    }
     .dropdown {
       min-width: 150px;
       border-radius: 25px;
       height: 50px;
       transition: $transition;
       @include centerFlex();
+      @media (max-width: 576px) {
+        border-radius: 12px;
+      }
       ul li {
         text-align: left;
       }
       &.active,
       &:hover {
-        a {
+        .account {
           color: $white;
           transition: $transition;
         }

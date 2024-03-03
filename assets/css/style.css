@@ -87,16 +87,6 @@ header .header_bar {
   height: 50px;
   width: 100%;
 }
-@media (max-width: 576px) {
-  header .header_bar {
-    height: 80px;
-    padding: 8px 0;
-  }
-  header .header_bar .container {
-    flex-direction: column;
-    justify-content: space-around;
-  }
-}
 header .header_bar .container {
   height: 100%;
   display: flex;
@@ -107,6 +97,11 @@ header .header_bar .customer_services {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+@media (max-width: 576px) {
+  header .header_bar .customer_services {
+    display: none;
+  }
 }
 header .header_bar .customer_services p,
 header .header_bar .customer_services a {
@@ -120,6 +115,12 @@ header .header_bar .social_lang {
   gap: 8px;
   display: flex;
   align-items: center;
+}
+@media (max-width: 576px) {
+  header .header_bar .social_lang {
+    width: 100%;
+    padding: 0 8px;
+  }
 }
 header .header_bar .social_lang .nav_links {
   height: 100%;
@@ -166,6 +167,11 @@ header .header_bar .social_lang .lang_btn {
   background: none;
   outline: none;
   font-family: "montserrat", sans-serif;
+}
+@media (max-width: 576px) {
+  header .header_bar .social_lang .lang_btn {
+    margin-left: auto;
+  }
 }
 header nav {
   display: flex;
@@ -229,6 +235,11 @@ header nav .navigation_links .nav_links li a.open-center {
   color: #f52020;
   padding: 2px 8px;
 }
+@media (max-width: 992px) {
+  header nav .navigation_links .nav_links li a.appointment, header nav .navigation_links .nav_links li a.open-center {
+    display: none;
+  }
+}
 header nav .navigation_links .nav_links li:last-child {
   padding-right: 0;
 }
@@ -260,6 +271,7 @@ header nav .search {
   header nav .search {
     height: 100%;
     display: flex;
+    gap: 12px;
     align-items: center;
     justify-content: flex-end;
   }
@@ -317,6 +329,13 @@ header nav .search .toggler.close span:nth-child(3) {
   transform-origin: 10% 10%;
   transform: rotate(-45deg);
   width: 25px;
+}
+header nav .search .appointment {
+  background: #f52020;
+  border-radius: 4px;
+  text-transform: capitalize;
+  color: #ffffff;
+  padding: 2px 8px;
 }
 header.sticky {
   position: fixed;
@@ -651,7 +670,7 @@ footer .copy_pay p a {
 }
 
 .contact-us {
-  padding: 40px 16px 60px;
+  padding: 40px 0 60px;
 }
 .contact-us form {
   padding: 48px 32px;
@@ -660,7 +679,7 @@ footer .copy_pay p a {
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 24px;
   margin-top: 12px;
 }
 @media (max-width: 576px) {
@@ -675,89 +694,49 @@ footer .copy_pay p a {
 @media (max-width: 768px) {
   .contact-us form .form-group {
     flex-direction: column;
-    gap: 48px;
+    gap: 24px;
   }
 }
 .contact-us form .form-group .inputfield {
   width: 100%;
-  padding: 0 32px;
+  padding: 0 12px;
   position: relative;
   display: flex;
   flex-direction: column;
 }
 @media (max-width: 576px) {
   .contact-us form .form-group .inputfield {
-    padding: 0 16px;
+    padding: 0 12px;
   }
-}
-.contact-us form .form-group .inputfield label {
-  position: absolute;
-  font-size: 14px;
-  color: #000000;
-  left: 32px;
-  transform: translateY(-50%);
-  top: 50%;
-  transition: all 0.3s ease-in-out;
-  cursor: auto;
-}
-@media (max-width: 576px) {
-  .contact-us form .form-group .inputfield label {
-    right: 16px;
-  }
-}
-.contact-us form .form-group .inputfield label.message-label {
-  top: 20%;
-}
-.contact-us form .form-group .inputfield label.h {
-  top: -4px;
-  color: #f52020;
 }
 .contact-us form .form-group .inputfield input,
 .contact-us form .form-group .inputfield textarea,
 .contact-us form .form-group .inputfield select {
-  width: 100%;
-  height: 45px;
   border: none;
   background: none;
   outline: none;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid #eee;
+  height: 54px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
 }
-.contact-us form .form-group .inputfield input:focus + span::after,
-.contact-us form .form-group .inputfield textarea:focus + span::after,
-.contact-us form .form-group .inputfield select:focus + span::after {
-  width: calc(100% - 64px);
-}
-@media (max-width: 576px) {
-  .contact-us form .form-group .inputfield input:focus + span::after,
-  .contact-us form .form-group .inputfield textarea:focus + span::after,
-  .contact-us form .form-group .inputfield select:focus + span::after {
-    width: calc(100% - 32px);
-  }
+.contact-us form .form-group .inputfield input:focus,
+.contact-us form .form-group .inputfield textarea:focus,
+.contact-us form .form-group .inputfield select:focus {
+  border-color: #f52020;
 }
 .contact-us form .form-group .inputfield textarea {
-  padding: 16px 0;
+  padding: 16px 12px;
   height: 130px;
-}
-.contact-us form .form-group .inputfield .highlight {
-  width: 100%;
-  height: 2px;
-  background: #eeeeee;
-}
-.contact-us form .form-group .inputfield .highlight::after {
-  content: "";
-  width: 0;
-  transition: all 0.3s ease-in-out;
-  left: 50%;
-  height: 2px;
-  background: #f52020;
-  position: absolute;
-  transform: translate(-50%);
 }
 .contact-us form button {
   border: none;
   background: none;
   outline: none;
   align-self: flex-end;
-  margin-right: 32px;
+  margin-right: 12px;
   isolation: isolate;
   padding: 0 16px;
   font-size: 14px;
@@ -765,7 +744,7 @@ footer .copy_pay p a {
   height: 50px;
   background: #000000;
   color: #ffffff;
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1180,13 +1159,18 @@ footer .copy_pay p a {
   margin-top: 32px;
   min-height: 50px;
   border-radius: 300px;
-  background: #ebebeb;
+  background: #f2f2f2;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+}
+@media (max-width: 576px) {
+  .try-service .selection_nav {
+    border-radius: 12px;
+  }
 }
 .try-service .selection_nav .dropdown {
   min-width: 150px;
@@ -1197,13 +1181,18 @@ footer .copy_pay p a {
   align-items: center;
   justify-content: center;
 }
+@media (max-width: 576px) {
+  .try-service .selection_nav .dropdown {
+    border-radius: 12px;
+  }
+}
 .try-service .selection_nav .dropdown ul li {
   text-align: left;
 }
 .try-service .selection_nav .dropdown.active, .try-service .selection_nav .dropdown:hover {
   background: #f52020;
 }
-.try-service .selection_nav .dropdown.active a, .try-service .selection_nav .dropdown:hover a {
+.try-service .selection_nav .dropdown.active .account, .try-service .selection_nav .dropdown:hover .account {
   color: #ffffff;
   transition: all 0.3s ease-in-out;
 }/*# sourceMappingURL=style.css.map */
