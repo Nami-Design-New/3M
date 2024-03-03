@@ -24,11 +24,9 @@ let heroSection = document.querySelector("main");
 window.addEventListener("scroll", () => {
   if (this.scrollY > 120) {
     header.classList.add("sticky");
-    document.querySelector(".mini_cart").style.top = "80px";
     heroSection.style.margin = "130px 0 0";
   } else {
     header.classList.remove("sticky");
-    document.querySelector(".mini_cart").style.top = "130px";
     heroSection.style.margin = "0";
   }
 });
@@ -75,21 +73,21 @@ inputs.forEach((input) => {
   input.addEventListener("focus", highlight);
   input.addEventListener("blur", dehighlight);
 });
-// nav-links highlight by getting path name
-const { pathname } = window.location;
-let navLinks = document.querySelectorAll(".navigation_links a");
-for (let i = 0; i < navLinks.length; i++) {
-  navLinks[i].classList.remove("active");
-}
-for (let i = 0; i < navLinks.length; i++) {
-  const linkPathname = new URL(navLinks[i].href).pathname;
-  if (linkPathname === pathname) {
-    navLinks[i].classList.add("active");
-  }
-  if (pathname === "/") {
-    navLinks[0].classList.add("active");
-  }
-}
+// // nav-links highlight by getting path name
+// const { pathname } = window.location;
+// let navLinks = document.querySelectorAll(".navigation_links a");
+// for (let i = 0; i < navLinks.length; i++) {
+//   navLinks[i].classList.remove("active");
+// }
+// for (let i = 0; i < navLinks.length; i++) {
+//   const linkPathname = new URL(navLinks[i].href).pathname;
+//   if (linkPathname === pathname) {
+//     navLinks[i].classList.add("active");
+//   }
+//   if (pathname === "/") {
+//     navLinks[0].classList.add("active");
+//   }
+// }
 // testimonials slider
 var swiper = new Swiper(".testimonilasSwiper", {
   loop: true,
@@ -112,6 +110,36 @@ var swiper = new Swiper(".testimonilasSwiper", {
     },
     350: {
       slidesPerView: 1,
+    },
+  },
+});
+//partnersSlider Slider
+var partnersSlider = new Swiper(".partnersSlider", {
+  // centeredSlides: true,
+  loop: true,
+  slidesPerView: "auto",
+  spaceBetween: 12,
+  speed: 1000,
+  pagination: {
+    el: ".partnersPagination",
+    clickable: true,
+  },
+  autoplay: {
+    delay: 1500,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 4,
+    },
+    991: {
+      slidesPerView: 5,
+    },
+    1400: {
+      slidesPerView: 6,
     },
   },
 });

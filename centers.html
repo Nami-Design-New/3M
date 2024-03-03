@@ -111,96 +111,12 @@
             <h6>
                 <a href="index.html">Home </a>
                 <i class="fa-regular fa-angle-right"></i>
-                Appointment
+                Our Authorized Centers
             </h6>
         </div>
-        <!-- contact-us section -->
-        <section class="contact-us">
-            <div class="container">
-                <h2 class="title_page">Appointment</h2>
-                <div class="row">
-                    <div class="col-12 p-3">
-                        <form action="">
-                            <div class="form-group">
-                                <!-- field-set -->
-                                <div class="inputfield">
-                                    <label for="name">Full Name</label>
-                                    <input type="text" id="name" name="name">
-                                    <span class="highlight"></span>
-                                </div>
-                                <!-- field-set -->
-                                <div class="inputfield">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" name="email">
-                                    <span class="highlight"></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <!-- field-set -->
-                                <div class="inputfield">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone">
-                                    <span class="highlight"></span>
-                                </div>
-                                <!-- field-set -->
-                                <div class="inputfield">
-                                    <label for="ordertype">Request Type</label>
-                                    <select name="ordertype" required="">
-                                        <option value="" disabled selected></option>
-                                        <option value="Special_Order">Franchise Request </option>
-                                        <option value="Building_Request">Price Offer for a Building Request </option>
-                                        <option value="Car_Care_Request">Price Offer for Auto-care Services Request
-                                        </option>
-                                        <option value="Complain">Complaint </option>
-                                        <option value="Remarks">Comments </option>
-                                    </select>
-                                    <span class="highlight"></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <!-- field-set -->
-                                <div class="inputfield">
-                                    <label for="ordertype">Select Place</label>
-                                    <select name="ordertype" required="">
-                                        <option value="" disabled selected></option>
-                                        <option value="Special_Order">Franchise Request </option>
-                                        <option value="Building_Request">Price Offer for a Building Request </option>
-                                        <option value="Car_Care_Request">Price Offer for Auto-care Services Request
-                                        </option>
-                                        <option value="Complain">Complaint </option>
-                                        <option value="Remarks">Comments </option>
-                                    </select>
-                                    <span class="highlight"></span>
-                                </div>
-                                <!-- field-set -->
-                                <div class="inputfield">
-                                    <label for="ordertype">Select Area</label>
-                                    <select name="ordertype" required="">
-                                        <option value="" disabled selected></option>
-                                        <option value="Special_Order">Franchise Request </option>
-                                        <option value="Building_Request">Price Offer for a Building Request </option>
-                                        <option value="Car_Care_Request">Price Offer for Auto-care Services Request
-                                        </option>
-                                        <option value="Complain">Complaint </option>
-                                        <option value="Remarks">Comments </option>
-                                    </select>
-                                    <span class="highlight"></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <!-- field-set -->
-                                <div class="inputfield">
-                                    <label for="notes" class="message-label">Notes</label>
-                                    <textarea name="notes" id="notes"></textarea>
-                                    <span class="highlight"></span>
-                                </div>
-                            </div>
-                            <button type="submit">Send</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="centers">
+            <div id="map" style="width: 100%; height: 600px;"></div>
+        </div>
     </main>
     <!-- footer -->
     <footer>
@@ -293,5 +209,53 @@
 </body>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/app.js"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_N1k4WKCdiZqCIjjgO0aaKz1Y19JqYqw&libraries=places&callback=initMap">
+    </script>
+<script>
+    // Function to initialize the map
+    function initMap() {
+        // Map frame
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 19.9451086, lng: 41.2457101 },
+            zoom: 12
+        });
+
+        // Markers
+        var markers = [];
+        var infoWindows = [];
+
+        var centers = [
+            { position: { lat: 19.957210, lng: 41.237212 }, title: 'Center 1' },
+            { position: { lat: 19.940993, lng: 41.353263 }, title: 'Center 2' },
+            { position: { lat: 19.919944, lng: 41.231290 }, title: 'Center 3' },
+            { position: { lat: 19.952345, lng: 41.250123 }, title: 'Center 4' },
+            { position: { lat: 19.930111, lng: 41.340567 }, title: 'Center 5' },
+            { position: { lat: 19.947890, lng: 41.260789 }, title: 'Center 6' },
+            { position: { lat: 19.960222, lng: 41.270444 }, title: 'Center 7' },
+            { position: { lat: 19.935678, lng: 41.245789 }, title: 'Center 8' },
+            { position: { lat: 19.955333, lng: 41.233222 }, title: 'Center 9' },
+            { position: { lat: 19.940888, lng: 41.251111 }, title: 'Center 10' }
+        ];
+
+        centers.forEach(function (center, index) {
+            var marker = new google.maps.Marker({
+                position: center.position,
+                map: map,
+                title: center.title
+            });
+            markers.push(marker);
+
+            var infoWindow = new google.maps.InfoWindow({
+                content: '<div class="marker"><span>- Cleaning Line - Dammam</span> <p>الدمام - طريق الظهران الجبيل السريع - الشعلة  0500223358 - المنطقة الشرقية</p ><a href="">Get Directions <i class="fa-solid fa-angle-right"></i></a></div>'
+            });
+            infoWindows.push(infoWindow);
+
+            marker.addListener('click', function () {
+                infoWindows[index].open(map, marker);
+            });
+        });
+    }
+</script>
 
 </html>
